@@ -46,7 +46,7 @@ export class FetchApiDataService {
     return this.http.post(`${apiUrl}/favorites/${user}/${movieID}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         }
       )
     }).pipe(
@@ -61,7 +61,7 @@ export class FetchApiDataService {
     return this.http.put(`${apiUrl}/favorites//${username}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         }
       )
     }).pipe(
@@ -75,7 +75,7 @@ export class FetchApiDataService {
     return this.http.get(`${apiUrl}/users/${userName}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -88,7 +88,7 @@ export class FetchApiDataService {
     return this.http.put(`${apiUrl}/users/${userName}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token
+          Authorization: `Bearer ${token}`
         }
       )
     }).pipe(
@@ -102,7 +102,7 @@ export class FetchApiDataService {
     return this.http.delete(`${apiUrl}/users/${userName}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token
+          Authorization: `Bearer ${token}`
         }
       )
     }).pipe(
@@ -115,10 +115,12 @@ export class FetchApiDataService {
   // Get requests
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
+    console.log(token);
     return this.http.get(`${apiUrl}movies`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         })
     }).pipe(
       map(this.extractResponseData),
@@ -131,7 +133,7 @@ export class FetchApiDataService {
     return this.http.get(`${apiUrl}movies/${title}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -144,7 +146,7 @@ export class FetchApiDataService {
     return this.http.get(`${apiUrl}genres`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -157,7 +159,7 @@ export class FetchApiDataService {
     return this.http.get(`${apiUrl}genres/${name}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -170,7 +172,7 @@ export class FetchApiDataService {
     return this.http.get(`${apiUrl}directors`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -183,7 +185,7 @@ export class FetchApiDataService {
     return this.http.get(`${apiUrl}directors/${name}`, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`,
         })
     }).pipe(
       map(this.extractResponseData),
