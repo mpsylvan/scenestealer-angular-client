@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+
+<div class="user-actions" style="display: flex; margin-top: 20px;">
+  <mat-card
+  class="user-details"
+  style=" width: 400px;  color: #fff; background-color: black; margin: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center;"
+  >
+      <mat-card-header>
+      <mat-card-title>Logged in as : {{ user.Username | uppercase}}</mat-card-title>
+      </mat-card-header>
+
+    
+      <h4  mat-flat-button color="primary" style="margin: 2px">
+          User : {{ user.Email }}
+      </h4>
+      <h4 button mat-flat-button color="primary" style="margin: 2px">
+          Birthday: {{formattedBirthdate}}
+      </h4>
+      <button (click)="deleteUser()" style="color: red;" mat-flat-button color="primary"> Delete User</button>
+
+  </mat-card>
+  
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title style="color: #fff;">Edit User</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <mat-form-field>
+            <input
+              matInput
+              [(ngModel)]="userData.Username"
+              placeholder="Username"
+              type="text"
+              name="Username"
+              value="{{user.Username}}"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              [(ngModel)]="userData.Password"
+              type="password"
+              placeholder="Password"
+              name="Password"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              [(ngModel)]="userData.Email"
+              type="email"
+              placeholder="Email"
+              name="Email"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              [(ngModel)]="userData.Birthdate"
+              type="date"
+              name="Birthday"
+              
+            />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="updateUser()" mat-raised-button color="primary">
+          Submit Edits
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <h1>{{user.Username}}'s Favorite Movies</h1>
+  <div *ngIf="favoriteMovies.length > 0; then thenBlock else elseBlock"  style="display: grid; grid-template-columns: repeat(4, 1fr);"></div>
+    <ng-template #thenBlock>
+      <div style="display:grid;
+      ">
+        <div
+          *ngFor="let movie of movies"
+        >
+        <div *ngIf="favoriteMovies.includes(movie._id)" style="display: flex; justify-content: center; flex-direction: column;">
+          <p  id="{{movie._id}}">{{movie.Name}}</p>
+          <img src="{{movie.Image}}" alt="{{movie.Name}}" style="width: 300px;"/>
+        </div>
+      </div>
+      </div>
+        
+    </ng-template>
+    <ng-template #elseBlock>
+      <h4>No Movies in Favorites ... </h4>
+    </ng-template>
