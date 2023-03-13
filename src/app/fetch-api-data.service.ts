@@ -40,10 +40,9 @@ export class FetchApiDataService {
     )
   }
 
-  addFavorite(movieID: string): Observable<any> {
-    const user = localStorage.getItem('user');
+  addFavorite(movieID: string, username: string) : Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.post(`${apiUrl}/favorites/${user}/${movieID}`, {
+    return this.http.post(`${apiUrl}users/${username}/favorites/${movieID}`,{content: 'application/json'}, {
       headers: new HttpHeaders(
         {
           Authorization: `Bearer ${token}`,
@@ -56,9 +55,8 @@ export class FetchApiDataService {
   }
 
   removeFavorite(movieID: string, username: string): Observable<any> {
-    const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    return this.http.put(`${apiUrl}/favorites//${username}`, {
+    return this.http.put(`${apiUrl}users/${username}/favorites/${movieID}`,{content: 'application/json' }, {
       headers: new HttpHeaders(
         {
           Authorization: `Bearer ${token}`,
@@ -72,7 +70,7 @@ export class FetchApiDataService {
 
   getFavorites(userName: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(`${apiUrl}/users/${userName}`, {
+    return this.http.get(`${apiUrl}users/${userName}`, {
       headers: new HttpHeaders(
         {
           Authorization: `Bearer ${token}`,
@@ -83,9 +81,9 @@ export class FetchApiDataService {
     )
   }
 
-  editUser(userName: string): Observable<any> {
+  editUser(userName: string, newUser: {}): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.put(`${apiUrl}/users/${userName}`, {
+    return this.http.put(`${apiUrl}users/${userName}`, newUser, {
       headers: new HttpHeaders(
         {
           Authorization: `Bearer ${token}`
@@ -99,7 +97,7 @@ export class FetchApiDataService {
 
   deleteUser(userName: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(`${apiUrl}/users/${userName}`, {
+    return this.http.delete(`${apiUrl}users/${userName}`, {
       headers: new HttpHeaders(
         {
           Authorization: `Bearer ${token}`
