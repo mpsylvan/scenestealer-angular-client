@@ -1,26 +1,31 @@
-<div style="display: flex; margin: 100px">
+<app-navbar></app-navbar>
+<h4>SceneStealer Movies</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;" >
+  
   <mat-card
     *ngFor="let movie of movies"
-    style="flex: 1 1 auto; color: #fff; background-color: black"
+    style=" color: #fff; background-color: rgb(42, 40, 40); margin: 5px;"
+    id="{{movie._id}}"
   >
     <mat-card-header>
       <mat-card-title>{{ movie.Name }}</mat-card-title>
       <mat-card-subtitle
-        >directed by: {{ movie.Director.Name }}</mat-card-subtitle
+        style = "color: white"> ({{ movie.ReleaseYear }})</mat-card-subtitle
       >
     </mat-card-header>
     <img src="{{ movie.Image }}" alt="{{ movie.Name }}" />
     <mat-card-actions>
-      <button mat-flat-button color="primary" style="margin: 2px">
+      <button (click) = "openGenreDialog(movie.Genre.Name, movie.Genre.Description)"  mat-flat-button color="primary" style="margin: 2px">
         {{ movie.Genre.Name }}
       </button>
-      <button button mat-flat-button color="primary" style="margin: 2px">
+      <button (click) = "openSynopsisDialog(movie.Name, movie.Synopsis)" button mat-flat-button color="primary" style="margin: 2px">
         Synopsis
       </button>
-      <button button mat-flat-button color="primary" style="margin: 2px">
-        {{ movie.ReleaseYear }}
+      <button (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Nationality)" button mat-flat-button color="primary" style="margin: 2px">{{ movie.Director.Name }}
       </button>
-      <mat-icon>favorite_border</mat-icon>
+      <div *ngIf="!favoriteMovies.includes(movie._id); then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock><mat-icon (click)="toggleMovieFavorites(movie._id, movie.Name)"  color="secondary">favorite_border</mat-icon></ng-template>
+      <ng-template #elseBlock><mat-icon (click)="toggleMovieFavorites(movie._id, movie.Name)"  color="accent">favorite_fill</mat-icon></ng-template>  
     </mat-card-actions>
   </mat-card>
 </div>
