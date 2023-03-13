@@ -23,10 +23,10 @@ export class UserLoginFormComponent {
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       console.log(result);
-      localStorage.setItem('user', result.user.Username);
+      localStorage.setItem('user', JSON.stringify(result.user));
       localStorage.setItem('token', result.token);
       this.dialogRef.close();
-      this.snackBar.open(result, 'Success', {
+      this.snackBar.open('Success', undefined, {
         duration: 2000,
       });
       this.router.navigate(['movies']);
