@@ -1,0 +1,17 @@
+
+    <mat-toolbar style="display : column;" color="primary">
+    
+      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button> -->
+      <span><h2>SceneStealer</h2></span>
+      <span class="example-spacer"></span>
+      <div style="display:flex;">
+        <a  class = "navbar-link" routerLink="/profile"><h2 style="color: white;">Profile</h2></a>
+        <a class = "navbar-link" routerLink = "/movies"><h2 style="color: white;">Movies</h2></a>
+        <a class = "navbar-link" routerLink="/welcome" (click)="logoutUser()"><h2 style="color: rgb(0, 0, 0);">Logout</h2></a>
+
+    </div>
+        
+
+    </mat-toolbar>
