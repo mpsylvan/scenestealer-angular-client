@@ -16,17 +16,26 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule } from "@angular/forms";
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 //Components
 import { UserRegisFormComponent } from './user-regis-form/user-regis-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from "./welcome-page/welcome-page.component";
+import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
+import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
+import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 const AppRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileCardComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ]
 
@@ -38,6 +47,12 @@ const AppRoutes: Routes = [
     UserRegisFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
+    ProfileCardComponent,
+    SynopsisDialogComponent,
+    GenreDialogComponent,
+    DirectorDialogComponent,
+    NavbarComponent,
+    WelcomePageComponent,
 
   ],
   imports: [
@@ -53,12 +68,14 @@ const AppRoutes: Routes = [
     MatFormFieldModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatToolbarModule,
+    MatMenuModule,
     FormsModule,
     RouterModule.forRoot(AppRoutes),
 
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
