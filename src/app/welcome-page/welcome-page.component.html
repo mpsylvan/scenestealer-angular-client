@@ -1,6 +1,7 @@
 <div class="welcome-page">
   <h1>SceneStealer</h1>
-  <button
+  <div class="action-buttons">
+    <button
     mat-raised-button
     (click)="openUserRegistrationDialog()"
     style="margin-right: 10px"
@@ -12,9 +13,10 @@
     class="button-confirmation"
     (click)="openUserLoginDialog()"
     mat-raised-button
-    color="secondary"
-    style="margin-right: 10px"
+    color="primary"
+    style="margin: 10px"
   >
     Login
   </button>
+  </div>
 </div>

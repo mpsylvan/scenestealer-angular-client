@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRegisFormComponent } from '../user-regis-form/user-regis-form.component';
 import { UserLoginFormComponent } from '../user-login-form/user-login-form.component';
+
+
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +13,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent implements OnInit {
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    private router: Router) { }
   ngOnInit(): void {
   }
   // This is the function that will open the dialog when the signup button is clicked  
@@ -26,5 +31,11 @@ export class WelcomePageComponent implements OnInit {
       width: '280px'
     });
   }
+
+
+  goToProfile(): void {
+    this.router.navigate(['profile'])
+  }
+
 
 }
