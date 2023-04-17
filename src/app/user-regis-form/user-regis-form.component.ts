@@ -20,6 +20,9 @@ export class UserRegisFormComponent implements OnInit {
     public dialogRef: MatDialogRef<UserRegisFormComponent>,
     public snackBar: MatSnackBar) { }
 
+  /**
+   * function that contains the userRegistrationDetails service and returns a snackbar feedback to user. 
+   */
   registerUser(): void {
     this.fetchApiData.userRegistrationDetails(this.userData).subscribe((result) => {
       this.dialogRef.close();

@@ -19,7 +19,9 @@ export class UserLoginFormComponent {
     public snackBar: MatSnackBar,
     private router: Router) { }
 
-
+  /**
+   * function that contatins the call to userLogin service, stores the user and re-routes to movies view.
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       console.log(result);

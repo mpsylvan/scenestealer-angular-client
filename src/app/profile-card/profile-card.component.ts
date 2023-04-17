@@ -38,7 +38,9 @@ export class ProfileCardComponent {
 
   
   
-  
+  /**
+   * function containing the edit user service for updating user attributes through form input.
+   */
   updateUser(){
     this.service.editUser(this.user.Username, this.userData).subscribe((result)=>{
       console.log(result);
@@ -54,7 +56,9 @@ export class ProfileCardComponent {
         duration: 800,
       })
     })}
-
+    /**
+   * function containing a pointo of no return prompt and the delete user service for deregsitering user from db.
+   */
     deleteUser(){
       let response = prompt('You are about to deregister account, doing so will log you out of the application and force you to re-register. Type in your username to proceed.')
       if (response !== this.user.Username){

@@ -7,7 +7,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./genre-dialog.component.scss']
 })
 export class GenreDialogComponent {
-
+    /**
+   * constructs a movie genre injecting data specific to each genre for every instance.
+   * @param data 
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data : {

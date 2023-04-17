@@ -7,7 +7,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./director-dialog.component.scss']
 })
 export class DirectorDialogComponent {
-  
+  /**
+   * constructs a director dialog injecting data specific to each director for every instance.
+   * @param data 
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data : {

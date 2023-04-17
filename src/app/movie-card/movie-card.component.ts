@@ -26,7 +26,7 @@ export class MovieCardComponent implements OnInit{
     public router: Router,
     ) { };
 
-
+  // when the component renders, check if user is logged in, if not route to welcome screen. 
   ngOnInit(): void {
     if(this.user.Username === undefined){
       this.router.navigate(['welcome']);
@@ -44,7 +44,11 @@ export class MovieCardComponent implements OnInit{
       return this.movies;
     })
   }
-
+  /**
+   * function that checks if a movie id is present in user's favorites list and then either adds it or removes it accordingly.
+   * @param id 
+   * @param title 
+   */
   toggleMovieFavorites(id: string, title: string){
     console.log(this.favoriteMovies)
     if(!this.favoriteMovies.includes(id)){
@@ -78,7 +82,11 @@ export class MovieCardComponent implements OnInit{
       })
     }
     }
-
+  /**
+   * function that presents a movie snackbar ui element displaying genre title and description data loaded in when card is created.
+   * @param name 
+   * @param description 
+   */
   openGenreDialog(name: string, description: string): void {
 
     const dialogConfig = new MatDialogConfig();
@@ -95,7 +103,11 @@ export class MovieCardComponent implements OnInit{
 
     this.dialog.open(GenreDialogComponent, dialogConfig);
   }
-
+/**
+ * function that presents a movie snackbar ui element displaying movie name and plot description data loaded in when card is created.
+ * @param name 
+ * @param synopsis 
+ */
   openSynopsisDialog(name: string, synopsis: string): void {
 
     const dialogConfig = new MatDialogConfig();
@@ -113,6 +125,11 @@ export class MovieCardComponent implements OnInit{
     this.dialog.open(SynopsisDialogComponent, dialogConfig);
   }
 
+  /**
+ * function that presents a movie snackbar ui element displaying movie director data loaded in when card is created.
+ * @param name 
+ * @param synopsis 
+ */
   openDirectorDialog(name: string, bio: string, nationality: string): void {
 
     const dialogConfig = new MatDialogConfig();
