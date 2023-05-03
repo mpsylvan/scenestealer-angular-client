@@ -15,6 +15,6 @@
 - Typescript
 - Class based components
 - Google Material designed UI elements
-  - Snackbar
 - TypeDoc documentation
+- Angular Router Service
 -
