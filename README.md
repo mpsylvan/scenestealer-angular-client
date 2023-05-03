@@ -17,4 +17,4 @@
 - Google Material designed UI elements
 - TypeDoc documentation
 - Angular Router Service
--
+
